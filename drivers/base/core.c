@@ -1202,9 +1202,8 @@ done:
 	glue_dir = get_glue_dir(dev);
 	kobject_del(&dev->kobj);
  Error:
-	cleanup_glue_dir(dev, glue_dir);
-	if (parent)
-		put_device(parent);
+	cleanup_device_parent(dev);
+	put_device(parent);
 name_error:
 	kfree(dev->p);
 	dev->p = NULL;
