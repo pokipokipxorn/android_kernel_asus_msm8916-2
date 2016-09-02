@@ -1,7 +1,8 @@
 /*
  * Copyright © 2015, Varun Chitre "varun.chitre15" <varun.chitre15@gmail.com>
  *
- * Charger Control driver for yl_bq24157_charger
+ * 
+ * Charger Control driver for smb1360-charger-fg
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -20,10 +21,12 @@
 #include "thundercharge_control.h"
 
 int mswitch=0;
-int custom_current=500;
+int custom_current=900;
 
 #define DRIVER_VERSION  1
 #define DRIVER_SUBVER 0
+
+#define MAX_VBUS_CURRENT 1500
 
 static ssize_t mswitch_show(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
 {
@@ -59,10 +62,10 @@ static ssize_t cust_current_store(struct kobject *kobj, struct kobj_attribute *a
 {
 int newcurr;
 sscanf(buf, "%d", &newcurr);
-if(mswitch==1)
+if(mswitch==1 && newcurr<=MAX_VBUS_CURRENT)
 custom_current = newcurr;
 else
-pr_info("Main switch disabled, neglecting values\n");
+pr_info("Main switch disabled or exceeds vbus limit, neglecting values\n");
 return count;
 }
 
