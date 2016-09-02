@@ -2250,7 +2250,7 @@ static void smb1360_external_power_changed(struct power_supply *psy)
         else
         chip->current_limit = 0;
 #else
-        chip->current_limit = prop.intval / 1000;
+        current_limit = prop.intval / 1000;
 #endif
             }
 
