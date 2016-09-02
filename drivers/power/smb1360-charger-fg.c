@@ -30,6 +30,10 @@
 #include <linux/qpnp/qpnp-adc.h>
 #include <linux/completion.h>
 #include <linux/pm_wakeup.h>
+#include <linux/switch.h>
+#ifdef CONFIG_THUNDERCHARGE_CONTROL
+#include "thundercharge_control.h"
+#endif
 
 //asus report capacity frank ++++
 #include <asm/uaccess.h>
@@ -2174,7 +2178,19 @@ static void smb1360_external_power_changed(struct power_supply *psy)
 		dev_err(chip->dev,
 			"could not read USB current_max property, rc=%d\n", rc);
 	else
-		current_limit = prop.intval / 1000;
+	    {
+#ifdef CONFIG_THUNDERCHARGE_CONTROL
+        if(!((prop.intval / 1000) ==0))
+        {
+        pr_info("Using custom current of %d",custom_current);
+		chip->current_limit = custom_current;
+        }
+        else
+        chip->current_limit = 0;
+#else
+        chip->current_limit = prop.intval / 1000;
+#endif
+            }
 
 	pr_debug("current_limit = %d\n", current_limit);
 /*+++BSP frank add asus_set_charger +++  remove set_appropriate_usb_current*/
