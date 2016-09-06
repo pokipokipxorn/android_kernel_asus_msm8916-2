@@ -77,7 +77,11 @@ dtb-$(CONFIG_ARCH_MSM8909) += msm8909-sim.dtb \
 	msm8909-512mb-mtp-wcd9326-refboard.dtb \
 	apq8009-mtp-wcd9326-refboard.dtb \
 	apq8009-512mb-mtp-wcd9326-refboard.dtb
-
+ifeq ($(CONFIG_ASUS_ZC550KL_PROJECT),y)
+dtb-$(CONFIG_ARCH_MSM8916) += zc550kl_msm8916-mtp.dtb \
+	zc550kl_msm8939-SR-v3.0-cdp.dtb \
+	zc550kl_msm8939-ER-v3.0-cdp.dtb
+else
 dtb-$(CONFIG_ARCH_MSM8916) += msm8916-cdp.dtb \
 	msm8916-cdp-smb1360.dtb \
 	msm8916-mtp.dtb \

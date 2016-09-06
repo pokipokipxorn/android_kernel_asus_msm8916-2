@@ -316,6 +316,7 @@ static void pet_watchdog_work(struct work_struct *work)
 	struct msm_watchdog_data *wdog_dd = container_of(delayed_work,
 						struct msm_watchdog_data,
 							dogwork_struct);
+
 	delay_time = msecs_to_jiffies(wdog_dd->pet_time);
 	if (enable) {
 		if (wdog_dd->do_ipi_ping)
@@ -693,6 +694,7 @@ static int msm_watchdog_probe(struct platform_device *pdev)
 	wdog_dd->dev = &pdev->dev;
 	platform_set_drvdata(pdev, wdog_dd);
 	cpumask_clear(&wdog_dd->alive_mask);
+
 	INIT_WORK(&wdog_dd->init_dogwork_struct, init_watchdog_work);
 	INIT_DELAYED_WORK(&wdog_dd->dogwork_struct, pet_watchdog_work);
 	queue_work(wdog_wq, &wdog_dd->init_dogwork_struct);

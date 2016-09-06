@@ -104,3 +104,9 @@ obj-$(CONFIG_SENSORS_BMI160_I2C) += bmi160_i2c.o
 ifeq ($(CONFIG_SENSORS_BMI160_I2C),y)
 	EXTRA_CFLAGS += -DBMI_USE_BASIC_I2C_FUNC
 endif
+#+++ ASUS_BSP alian_Shen "Add GSensor for ZC550KL"
+ifeq ($(CONFIG_ASUS_ZC550KL_PROJECT),y)
+#obj-$(CONFIG_KXTJ2_ZC550K) +=  kxtj9_zc550kl.o
+obj-y +=  kxtj9_zc550kl.o
+#obj-y +=  bma2x2_zc550kl.o,
+endif

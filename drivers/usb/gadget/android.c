@@ -3179,6 +3179,7 @@ functions_store(struct device *pdev, struct device_attribute *attr,
 	}
 
 	strlcpy(buf, buff, sizeof(buf));
+
 	b = strim(buf);
 
 	dev->cdev->gadget->streaming_enabled = false;
@@ -3288,6 +3289,7 @@ static ssize_t enable_store(struct device *pdev, struct device_attribute *attr,
 		 * pull-up is enabled immediately. The enumeration is
 		 * reliable with 100 msec delay.
 		 */
+
 		list_for_each_entry(conf, &dev->configs, list_item)
 			list_for_each_entry(f_holder, &conf->enabled_functions,
 						enabled_list) {

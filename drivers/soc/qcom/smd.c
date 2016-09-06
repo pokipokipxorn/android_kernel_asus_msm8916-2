@@ -3279,6 +3279,7 @@ int __init msm_smd_init(void)
 			__func__, rc);
 		return rc;
 	}
+
 	return 0;
 }
 

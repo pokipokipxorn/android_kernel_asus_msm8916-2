@@ -347,7 +347,7 @@ bool Laser_Forcus_sysfs_write_cross_talk_offset(int calvalue)
 	rc = Sysfs_write_int(LASERFOCUS_SENSOR_CROSS_TALK_CALIBRATION_FACTORY_FILE, calvalue);
 #endif
 */
-
+/*
 	if(g_ASUS_bootmode == USER_MODE || g_ASUS_bootmode == CHARGER_FACTORY_MODE || g_ASUS_bootmode == FFBM_MODE)
 	{
 		rc = Sysfs_write_int(LASERFOCUS_SENSOR_CROSS_TALK_CALIBRATION_FACTORY_FILE, calvalue);
@@ -371,3 +371,4 @@ bool Laser_Forcus_sysfs_write_cross_talk_offset(int calvalue)
 
 	return rc;
 }
+*/

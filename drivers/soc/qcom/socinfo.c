@@ -1439,3 +1439,4 @@ const int cpu_is_krait_v3(void)
 		return 0;
 	};
 }
+

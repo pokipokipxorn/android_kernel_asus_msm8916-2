@@ -862,6 +862,7 @@ static void update_cpu_topology(struct device *dev)
 	core_ptr->sync_cluster = false;
 
 	sync_cluster_id = get_sync_cluster(dev, &sync_cluster_cnt);
+
 	if (!sync_cluster_id) {
 		devm_kfree(dev, core_ptr);
 		core_ptr = NULL;

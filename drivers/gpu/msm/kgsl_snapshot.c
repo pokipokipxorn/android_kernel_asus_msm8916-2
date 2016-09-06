@@ -388,7 +388,6 @@ err_put:
 	return ret;
 }
 EXPORT_SYMBOL(kgsl_snapshot_get_object);
-
 /**
  * kgsl_snapshot_dump_regs - helper function to dump device registers
  * @device - the device to dump registers from

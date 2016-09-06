@@ -3084,7 +3084,6 @@ static int mdss_fb_set_par(struct fb_info *info)
 		mdss_fb_blank_sub(FB_BLANK_UNBLANK, info, mfd->op_enable);
 		mfd->panel_reconfig = false;
 	}
-
 	return ret;
 }
 
