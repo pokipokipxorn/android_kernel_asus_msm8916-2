@@ -333,6 +333,9 @@ static int set_cpu_max_freq(const char *buf, const struct kernel_param *kp)
 	cpumask_var_t limit_mask;
 	int ret;
 
+	if (touchboost == 0)
+		return 0;
+	
 	while ((cp = strpbrk(cp + 1, " :")))
 		ntokens++;
 
