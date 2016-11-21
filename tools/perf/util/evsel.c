@@ -1524,6 +1524,7 @@ int perf_evsel__open_strerror(struct perf_evsel *evsel,
 		 ">= 0: Disallow raw tracepoint access by users without CAP_IOC_LOCK\n"
 		 ">= 1: Disallow CPU event access by users without CAP_SYS_ADMIN\n"
 		 ">= 2: Disallow kernel profiling by users without CAP_SYS_ADMIN",
+
 				 target->system_wide ? "system-wide " : "");
 	case ENOENT:
 		return scnprintf(msg, size, "The %s event is not supported.",
