@@ -4019,8 +4019,9 @@ static int msm8x16_wcd_hph_pa_event(struct snd_soc_dapm_widget *w,
 					WCD_EVENT_PRE_HPHL_PA_ON);
 		else if (w->shift == 4)
 			if (speaker_run == 0) {
-			msm8x16_notifier_call(codec,
-					WCD_EVENT_PRE_HPHR_PA_ON);
+				msm8x16_notifier_call(codec,
+						WCD_EVENT_PRE_HPHR_PA_ON);
+			}
 		snd_soc_update_bits(codec,
 				MSM8X16_WCD_A_ANALOG_NCP_FBCTRL, 0x20, 0x20);
 		break;
@@ -4058,8 +4059,9 @@ static int msm8x16_wcd_hph_pa_event(struct snd_soc_dapm_widget *w,
 				MSM8X16_WCD_A_ANALOG_RX_HPH_R_TEST, 0x04, 0x00);
 			msm8x16_wcd->mute_mask |= HPHR_PA_DISABLE;
 			if (speaker_run == 0) {
-			msm8x16_notifier_call(codec,
+				msm8x16_notifier_call(codec,
 					WCD_EVENT_PRE_HPHR_PA_OFF);
+			}
 		}
 		if (get_codec_version(msm8x16_wcd) >= CAJON) {
 			snd_soc_update_bits(codec,
@@ -4077,8 +4079,9 @@ static int msm8x16_wcd_hph_pa_event(struct snd_soc_dapm_widget *w,
 			clear_bit(WCD_MBHC_HPHR_PA_OFF_ACK,
 				&msm8x16_wcd->mbhc.hph_pa_dac_state);
 			if (speaker_run == 0) {
-			msm8x16_notifier_call(codec,
-					WCD_EVENT_POST_HPHR_PA_OFF);
+				msm8x16_notifier_call(codec,
+						WCD_EVENT_POST_HPHR_PA_OFF);
+			}
 		}
 		usleep_range(4000, 4100);
 
