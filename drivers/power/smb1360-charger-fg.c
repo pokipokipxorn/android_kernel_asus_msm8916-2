@@ -2245,10 +2245,10 @@ static void smb1360_external_power_changed(struct power_supply *psy)
         if(!((prop.intval / 1000) ==0))
         {
         pr_info("Using custom current of %d",custom_current);
-		chip->current_limit = custom_current;
+		current_limit = custom_current;
         }
         else
-        chip->current_limit = 0;
+        current_limit = 0;
 #else
         current_limit = prop.intval / 1000;
 #endif
